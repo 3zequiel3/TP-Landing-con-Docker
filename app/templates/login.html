@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Login – Mi Tienda{% endblock %}
+{% block content %}
+  <main class="form-container">
+    <h1>Iniciar Sesión</h1>
+    <form method="POST" action="{{ url_for('routes.login') }}">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      <input type="email" name="email" placeholder="Correo" required>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="{{ url_for('routes.signup') }}">Regístrate</a></p>
+  </main>
+{% endblock %}

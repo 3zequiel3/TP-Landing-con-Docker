@@ -1,0 +1,104 @@
+/* --- HEADER Y NAVBAR --- */
+.navbar { background: var(--bs-body-tertiary); }  /* Bootstrap variable */
+.navbar-brand { font-weight: bold; }
+.nav-link {
+  color: #007bff;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+.nav-link:hover, .nav-link.active {
+  color: #0056b3;
+}
+
+/* --- CARRUSEL (PARTE 4) --- */
+/* --- CARRUSEL (PARTE 4) --- */
+.parte4 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .carousel-inner {
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    display: block;
+    position: relative;
+    width: 100%;
+    /* altura máxima del contenedor para centrar la imagen */
+    max-height: 500px;
+    transition: transform 0.6s ease;
+  }
+  
+  .carousel-item img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    margin: auto; /* centra la imagen dentro del slide */
+  }
+  
+  /* --- CAPTION --- */
+  .carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    right: 10%;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-caption p {
+    font-size: 16px;
+  }
+  
+  .carousel-caption .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: transform 0.3s;
+  }
+  
+  .carousel-caption .btn:hover {
+    transform: scale(1.1);
+  }
+  
+
+/* Limitar el alto máximo de las imágenes para que no excedan el viewport */
+
+
+/* --- GALERÍA (PARTE 3) --- */
+#galeria {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.precio {
+  font-size: 18px;
+  font-weight: bold;
+  color: #28a745;
+}

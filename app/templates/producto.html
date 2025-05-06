@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Detalles de {{ product.name }}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="product-container">
+    <div class="producto-detalle">
+      <img id="producto-imagen"
+           src="{{ url_for('static', filename=product.image) }}"
+           alt="{{ product.name }}">
+      <div class="producto-info">
+        <h1 id="producto-nombre">{{ product.name }}</h1>
+        <p id="producto-descripcion">{{ product.description }}</p>
+        <p class="text-success">Precio: ${{ product.price }}</p>
+        <a href="#" class="boton-comprar">Comprar ahora</a>
+        <button type="button" onclick="window.history.back()" class="boton-volver">
+          ← Volver
+        </button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

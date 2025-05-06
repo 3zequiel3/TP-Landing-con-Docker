@@ -1,0 +1,42 @@
+services:
+  db_landing:
+    image: mysql:8.0
+    container_name: db_landing
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password  # Cambia la contraseña
+      MYSQL_DATABASE: landing_db         # Cambia el nombre de la base de datos
+      MYSQL_USER: user_name              # Cambia el nombre de usuario
+      MYSQL_PASSWORD: user_password      # Cambia la contraseña del usuario
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - landing_network
+
+  flask:
+    build: .
+    container_name: docker_eze_flask
+    environment:
+      - FLASK_APP=.
+       # Cambia esto si tu aplicación tiene un nombre diferente
+      - FLASK_ENV=development
+      - DATABASE_URL=mysql+pymysql://user_name:user_password@db_landing:3306/landing_db
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db_landing
+    networks:
+      - landing_network
+    volumes:
+      - ./app:/app  # Monta el directorio de la aplicación
+    working_dir: /app
+    command: ["sh", "-c", "python wait_for_db.py && flask run --host=0.0.0.0"]  # Espera a DB antes de iniciar Flask
+
+networks:
+  landing_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
