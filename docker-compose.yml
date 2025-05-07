@@ -3,10 +3,10 @@ services:
     image: mysql:8.0
     container_name: db_landing
     environment:
-      MYSQL_ROOT_PASSWORD: root_password  # Cambia la contraseña
-      MYSQL_DATABASE: landing_db         # Cambia el nombre de la base de datos
-      MYSQL_USER: user_name              # Cambia el nombre de usuario
-      MYSQL_PASSWORD: user_password      # Cambia la contraseña del usuario
+      MYSQL_ROOT_PASSWORD: root_password 
+      MYSQL_DATABASE: landing_db         
+      MYSQL_USER: admin              
+      MYSQL_PASSWORD: adminPass      
     ports:
       - "3306:3306"
     volumes:
