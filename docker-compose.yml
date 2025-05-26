@@ -13,13 +13,11 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - landing_network
-
   flask:
     build: .
     container_name: docker_eze_flask
     environment:
       - FLASK_APP=.
-       # Cambia esto si tu aplicación tiene un nombre diferente
       - FLASK_ENV=development
       - DATABASE_URL=mysql+pymysql://admin:adminPass@db_landing:3306/landing_db
     ports:

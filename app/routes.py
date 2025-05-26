@@ -3,6 +3,7 @@ from .models import User, Product
 from . import db
 import logging
 from flask import current_app, session
+from werkzeug.security import generate_password_hash, check_password_hash
 
 routes = Blueprint('routes', __name__)
 
@@ -37,8 +38,9 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        user = User.query.filter_by(email=email, password=password).first()
-        if user:
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password, password):
+            # Si el usuario existe y la contraseña es correcta
             session['user_id'] = user.id          # <-- esto guarda la sesión
             flash(f"Bienvenido, {user.email}!")
             print(f"Inicio de sesión del usuario: {email}, {password}")
@@ -59,8 +61,11 @@ def signup():
         if existing_user:
             flash('El correo ya está registrado.')
             return redirect(url_for('routes.signup'))
-
-        new_user = User(username = username,email=email, password=password)
+        
+        hashed_password = generate_password_hash(password)
+        new_user = User(username = username,email=email, password=hashed_password)
+        print(f"Creando usuario: {username}, {email}, {hashed_password}")
+        # Guardar el nuevo usuario en la base de datos
         db.session.add(new_user)
         db.session.commit()
         flash('Cuenta creada correctamente. Ahora haz login.')
