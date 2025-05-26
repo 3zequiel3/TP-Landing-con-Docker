@@ -51,15 +51,16 @@ def login():
 @routes.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
+        username = request.form['username']
         email = request.form.get('email')
         password = request.form.get('password')
 
-        existing_user = User.query.filter_by(email=email).first()
+        existing_user = User.query.filter((User.email == email) | (User.username == username)).first()
         if existing_user:
             flash('El correo ya está registrado.')
             return redirect(url_for('routes.signup'))
 
-        new_user = User(email=email, password=password)
+        new_user = User(username = username,email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
         flash('Cuenta creada correctamente. Ahora haz login.')

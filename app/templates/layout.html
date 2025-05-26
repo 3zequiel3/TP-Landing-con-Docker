@@ -38,7 +38,7 @@
       <!-- 3. Auth a la derecha -->
       <div class="d-flex">
         {% if current_user %}
-          <span class="navbar-text me-3">Hola, {{ current_user.email }}</span>
+          <span class="navbar-text me-3">Hola, {{ current_user.username }}</span>
           <a class="btn btn-outline-secondary" href="{{ url_for('routes.logout') }}">Cerrar sesión</a>
         {% else %}
           <a class="btn btn-outline-primary me-2" href="{{ url_for('routes.login') }}">Login</a>
