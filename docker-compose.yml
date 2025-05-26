@@ -21,7 +21,7 @@ services:
       - FLASK_APP=.
        # Cambia esto si tu aplicación tiene un nombre diferente
       - FLASK_ENV=development
-      - DATABASE_URL=mysql+pymysql://user_name:user_password@db_landing:3306/landing_db
+      - DATABASE_URL=mysql+pymysql://admin:adminPass@db_landing:3306/landing_db
     ports:
       - "5000:5000"
     depends_on:

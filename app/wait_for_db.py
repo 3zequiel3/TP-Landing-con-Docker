@@ -4,8 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
 
 DB_HOST = 'db_landing'
-DB_USER = 'user_name'
-DB_PASSWORD = 'user_password'
+DB_USER = 'admin'
+DB_PASSWORD = 'adminPass'
 DB_NAME = 'landing_db'
 DB_PORT = 3306
 
